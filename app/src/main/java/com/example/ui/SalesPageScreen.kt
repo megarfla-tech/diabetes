@@ -110,28 +110,7 @@ import com.example.R
 import com.example.data.BrazilianDish
 import com.example.data.RecipePreview
 import com.example.data.SalesDataRepository
-import com.example.ui.theme.AccentGold
-import com.example.ui.theme.AccentOrange
-import com.example.ui.theme.AccentOrangeDark
-import com.example.ui.theme.CardBorder
-import com.example.ui.theme.EmeraldDark
-import com.example.ui.theme.EmeraldGlow
-import com.example.ui.theme.GoldBorder
-import com.example.ui.theme.GoldLight
-import com.example.ui.theme.GreenBorder
-import com.example.ui.theme.GreenDark
-import com.example.ui.theme.GreenLight
-import com.example.ui.theme.GreenPrimary
-import com.example.ui.theme.GreenSoft
-import com.example.ui.theme.MintBadge
-import com.example.ui.theme.OrangeGradientEnd
-import com.example.ui.theme.OrangeGradientStart
-import com.example.ui.theme.RedPain
-import com.example.ui.theme.RedPainBg
-import com.example.ui.theme.RedPainBorder
-import com.example.ui.theme.SurfaceWhite
-import com.example.ui.theme.TextDark
-import com.example.ui.theme.TextMuted
+import com.example.ui.theme.*
 import kotlinx.coroutines.delay
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -370,6 +349,11 @@ fun SalesPageScreen() {
                         }
                     }
 
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    // Pill Dinâmico de Glicemia Alvo
+                    GlucoseLivePill()
+
                     // Headline Principal
                     Text(
                         text = "Descubra Como Controlar o Seu Diabetes Comendo Bem Todos os Dias",
@@ -532,6 +516,11 @@ fun SalesPageScreen() {
             }
 
             // ==========================================
+            // COMPARAÇÃO DIRETA: DIETA ANTIGA vs NOVO MÉTODO
+            // ==========================================
+            ComparisonSection()
+
+            // ==========================================
             // 4. APRESENTAÇÃO DA SOLUÇÃO COM IMAGEM GOURMET
             // ==========================================
             SectionContainer(
@@ -687,6 +676,16 @@ fun SalesPageScreen() {
             }
 
             // ==========================================
+            // O ESCUDO GLICÊMICO (CIÊNCIA NO PRATO)
+            // ==========================================
+            GlucoseShieldSection()
+
+            // ==========================================
+            // SEÇÃO DE PÚBLICOS ESPECÍFICOS (TIPO 1, 2, PRÉ-DIABETES)
+            // ==========================================
+            AudienceSection()
+
+            // ==========================================
             // 7. SEÇÃO DE BÔNUS (VALOR PERCEBIDO)
             // ==========================================
             SectionContainer(
@@ -830,6 +829,347 @@ fun AuthorityChip(text: String) {
             color = GreenDark,
             modifier = Modifier.padding(horizontal = 9.dp, vertical = 5.dp)
         )
+    }
+}
+
+@Composable
+fun GlucoseLivePill() {
+    val infiniteTransition = rememberInfiniteTransition(label = "pulse_meter")
+    val alpha by infiniteTransition.animateFloat(
+        initialValue = 0.4f,
+        targetValue = 1f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(900, easing = FastOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "pulse_alpha"
+    )
+
+    Surface(
+        shape = RoundedCornerShape(50),
+        color = Color(0xFFE8F8F0),
+        border = BorderStroke(1.dp, Color(0xFFA7F3D0)),
+        shadowElevation = 2.dp,
+        modifier = Modifier.padding(bottom = 6.dp)
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 14.dp, vertical = 7.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(10.dp)
+                    .background(Color(0xFF10B981).copy(alpha = alpha), CircleShape)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = "Glicemia Alvo Pós-Prandial: 80 a 110 mg/dL",
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF065F46)
+            )
+        }
+    }
+}
+
+@Composable
+fun ComparisonSection() {
+    SectionContainer(
+        tag = "COMPARAÇÃO CLÍNICA & QUALIDADE DE VIDA",
+        tagColor = GreenPrimary,
+        title = "A Diferença Real Entre Sobreviver e Viver Bem com Diabetes",
+        subtitle = "Veja o contraste entre a antiga rotina de frustração e o novo método alimentar com sabor:",
+        backgroundColor = Color(0xFFFAFCFA)
+    ) {
+        // Coluna Antiga
+        Card(
+            shape = RoundedCornerShape(16.dp),
+            colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF7F5)),
+            border = BorderStroke(1.dp, Color(0xFFFED7D7)),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column(modifier = Modifier.padding(18.dp)) {
+                Text(
+                    text = "❌ O MÉTODO TRADICIONAL & PUNITIVO",
+                    color = Color(0xFFE53E3E),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    letterSpacing = 0.5.sp
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "A Rotina de Frustração e Medo",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = GreenDark
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+
+                ComparisonItem(isPositive = false, title = "Comida Sem Sal e Sem Cor", desc = "Frango grelhado seco e legumes cozidos na água todos os dias.")
+                ComparisonItem(isPositive = false, title = "Medo do Glicosímetro", desc = "Picos imprevisíveis de 180 a 250 mg/dL após qualquer refeição comum.")
+                ComparisonItem(isPositive = false, title = "Panela Separada", desc = "Você come sua marmita isolado enquanto a família se diverte no almoço.")
+                ComparisonItem(isPositive = false, title = "Desejos Incontroláveis", desc = "Vontade desesperada de comer doces e pães que são sumariamente proibidos.")
+            }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Coluna Nova
+        Card(
+            shape = RoundedCornerShape(16.dp),
+            colors = CardDefaults.cardColors(containerColor = Color(0xFFF0FBF5)),
+            border = BorderStroke(2.dp, Color(0xFF34D399)),
+            elevation = CardDefaults.cardElevation(6.dp),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column(modifier = Modifier.padding(18.dp)) {
+                Text(
+                    text = "✅ MÉTODO 400 RECEITAS PARA DIABÉTICOS",
+                    color = Color(0xFF059669),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    letterSpacing = 0.5.sp
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "Sabor Real, Liberdade e Glicemia Baixa",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = GreenDark
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+
+                ComparisonItem(isPositive = true, title = "Gastronomia Autêntica", desc = "Ervas nobres, texturas douradas e temperos funcionais brasileiros.")
+                ComparisonItem(isPositive = true, title = "Glicemia Plana e Estável", desc = "Índice pós-prandial mantido entre 80 e 110 mg/dL sem surpresas ruins.")
+                ComparisonItem(isPositive = true, title = "Mesa Unida em Família", desc = "Todos comem e elogiam a mesma panela no almoço de domingo.")
+                ComparisonItem(isPositive = true, title = "Pães e Doces Seguros", desc = "Substituições inteligentes com farinhas ricas em fibras de lenta absorção.")
+            }
+        }
+    }
+}
+
+@Composable
+fun ComparisonItem(isPositive: Boolean, title: String, desc: String) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 6.dp),
+        verticalAlignment = Alignment.Top
+    ) {
+        Surface(
+            shape = CircleShape,
+            color = if (isPositive) Color(0xFF10B981) else Color(0xFFFED7D7),
+            modifier = Modifier.size(20.dp)
+        ) {
+            Box(contentAlignment = Alignment.Center) {
+                Text(
+                    text = if (isPositive) "✓" else "✕",
+                    color = if (isPositive) Color.White else Color(0xFFC53030),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+        Spacer(modifier = Modifier.width(10.dp))
+        Column {
+            Text(
+                text = title,
+                fontWeight = FontWeight.Bold,
+                fontSize = 13.sp,
+                color = if (isPositive) Color(0xFF064E3B) else Color(0xFF2D3748)
+            )
+            Text(
+                text = desc,
+                fontSize = 12.sp,
+                color = TextMuted,
+                lineHeight = 16.sp
+            )
+        }
+    }
+}
+
+@Composable
+fun GlucoseShieldSection() {
+    SectionContainer(
+        tag = "CIÊNCIA DA GLICOSE ESTÁVEL",
+        tagColor = EmeraldDark,
+        title = "O Escudo Glicêmico: Por Que Não Há Picos de Açúcar",
+        subtitle = "O segredo não é passar fome, mas criar uma blindagem digestiva que aplaina a absorção dos carboidratos:",
+        backgroundColor = Forest950
+    ) {
+        Card(
+            shape = RoundedCornerShape(16.dp),
+            border = BorderStroke(1.5.dp, Color(0xFF10B981)),
+            elevation = CardDefaults.cardElevation(8.dp),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Box {
+                Image(
+                    painter = painterResource(id = R.drawable.img_diabetes_plate_cgm),
+                    contentDescription = "Refeição saudável para diabéticos com glicosímetro marcando 98 mg/dL",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(16f / 9f),
+                    contentScale = ContentScale.Crop
+                )
+                Surface(
+                    color = Forest950.copy(alpha = 0.92f),
+                    shape = RoundedCornerShape(12.dp),
+                    border = BorderStroke(1.dp, Color(0xFF10B981)),
+                    modifier = Modifier
+                        .align(Alignment.BottomStart)
+                        .padding(12.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Surface(
+                            color = Color(0xFF022616),
+                            border = BorderStroke(1.dp, Color(0xFF34D399)),
+                            shape = RoundedCornerShape(6.dp)
+                        ) {
+                            Column(
+                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text("98", fontSize = 16.sp, fontWeight = FontWeight.ExtraBold, color = Color(0xFF34D399))
+                                Text("mg/dL", fontSize = 8.sp, color = Color(0xFFA7F3D0), fontWeight = FontWeight.Bold)
+                            }
+                        }
+                        Spacer(modifier = Modifier.width(10.dp))
+                        Column {
+                            Text("Glicemia Pós-Almoço", fontSize = 11.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                            Text("Zona Verde Segura após refeição completa", fontSize = 10.sp, color = Color(0xFFA7F3D0))
+                        }
+                    }
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        ShieldPillarCard(
+            icon = "🛡️",
+            title = "1. Fibras Solúveis Viscosas",
+            desc = "Formam um gel natural no trato digestivo que retarda a quebra e a absorção de glicose."
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        ShieldPillarCard(
+            icon = "⚖️",
+            title = "2. Sinergia Proteínas + Gorduras Boas",
+            desc = "Aplainam a resposta insulínica e oferecem saciedade celular prolongada sem sonolência."
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        ShieldPillarCard(
+            icon = "🌿",
+            title = "3. Temperos Otimizadores Naturais",
+            desc = "Cúrcuma, canela pura, gengibre e orégano que potencializam a sensibilidade celular à insulina."
+        )
+    }
+}
+
+@Composable
+fun ShieldPillarCard(icon: String, title: String, desc: String) {
+    Surface(
+        color = Color(0xFF0D3325),
+        border = BorderStroke(1.dp, Color(0xFF1E5640)),
+        shape = RoundedCornerShape(12.dp),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Row(
+            modifier = Modifier.padding(14.dp),
+            verticalAlignment = Alignment.Top
+        ) {
+            Text(icon, fontSize = 22.sp)
+            Spacer(modifier = Modifier.width(12.dp))
+            Column {
+                Text(title, fontWeight = FontWeight.Bold, fontSize = 13.sp, color = Color(0xFF6EE7B7))
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(desc, fontSize = 12.sp, color = Color(0xFFD1E7DD), lineHeight = 16.sp)
+            }
+        }
+    }
+}
+
+@Composable
+fun AudienceSection() {
+    SectionContainer(
+        tag = "ATENDIMENTO PERSONALIZADO",
+        tagColor = SoftBlue700,
+        title = "Feito Sob Medida Para a Sua Condição",
+        subtitle = "Não importa o estágio do seu diagnóstico, as 400 receitas foram calibradas para a sua rotina real:",
+        backgroundColor = SoftBlue50
+    ) {
+        AudienceCard(
+            icon = "🩺",
+            title = "Diabetes Tipo 2",
+            desc = "Reduza a resistência à insulina, desinflame o corpo e ajude a normalizar a hemoglobina glicada comendo comida de verdade.",
+            benefit = "✨ Menos picos e mais vitalidade"
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        AudienceCard(
+            icon = "💉",
+            title = "Diabetes Tipo 1",
+            desc = "Gramas exatas de carboidratos líquidos já calculadas em cada prato, tornando a dosagem de insulina previsível e segura.",
+            benefit = "✨ Contagem de carbos descomplicada"
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        AudienceCard(
+            icon = "⚠️",
+            title = "Pré-Diabetes",
+            desc = "Aproveite a janela de ouro da reversão metabólica para trazer seus exames de volta à faixa de normalidade em poucas semanas.",
+            benefit = "✨ Blindagem preventiva imediata"
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        AudienceCard(
+            icon = "👵",
+            title = "Idosos & Toda a Família",
+            desc = "Pratos fáceis de mastigar e digerir, com ingredientes baratos e comuns da feira livre ou do supermercado de bairro.",
+            benefit = "✨ Ingredientes simples e acessíveis"
+        )
+    }
+}
+
+@Composable
+fun AudienceCard(icon: String, title: String, desc: String, benefit: String) {
+    Card(
+        shape = RoundedCornerShape(14.dp),
+        colors = CardDefaults.cardColors(containerColor = SurfaceWhite),
+        border = BorderStroke(1.dp, CardBorder),
+        elevation = CardDefaults.cardElevation(2.dp),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Surface(
+                    color = Color(0xFFE8F8F0),
+                    shape = RoundedCornerShape(10.dp),
+                    modifier = Modifier.size(38.dp)
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Text(icon, fontSize = 20.sp)
+                    }
+                }
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(title, fontWeight = FontWeight.Bold, fontSize = 15.sp, color = GreenDark)
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(desc, fontSize = 12.sp, color = TextMuted, lineHeight = 17.sp)
+            Spacer(modifier = Modifier.height(10.dp))
+            Surface(
+                color = Color(0xFFECFDF5),
+                shape = RoundedCornerShape(6.dp)
+            ) {
+                Text(
+                    text = benefit,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF047857),
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                )
+            }
+        }
     }
 }
 

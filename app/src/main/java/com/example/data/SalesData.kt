@@ -58,7 +58,7 @@ data class RecipePreview(
 )
 
 object SalesDataRepository {
-    const val CHECKOUT_URL = "https://hotm.io/TlvyCi"
+    const val CHECKOUT_URL = "https://go.hotmart.com/G107504549N?dp=1"
 
     val sampleRecipes = listOf(
         RecipePreview(

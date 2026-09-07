@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle o Seu Diabetes Comendo Bem | 400 Receitas Testadas</title>
+  <meta name="description" content="Descubra como controlar o diabetes sem abrir mão do sabor com 400 receitas práticas, carboidratos contados e respaldo de 69 fontes científicas.">
+  
+  <!-- Typography: Plus Jakarta Sans for UI/Body + Playfair Display for Editorial Display Titles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM: Modern, Clean & Professional
+       Color Palette: Deep Forest Greens & Soft Blues
+       Whitespace: Generous & Breathable for Maximum Readability
+       ========================================================================== */
+    :root {
+      /* Deep Forest Greens */
+      --forest-950: #041B12;
+      --forest-900: #08291C;
+      --forest-850: #0D3726;
+      --forest-800: #124631;
+      --forest-700: #195C42;
+      --forest-600: #227554;
+      --forest-500: #2E946B;
+      --forest-400: #46B286;
+      --forest-200: #B7DFCD;
+      --forest-100: #DCF0E7;
+      --forest-50:  #EFF8F4;
+
+      /* Soft Blues (Clinical Credibility, Serenity & Accent Pairing) */
+      --soft-blue-900: #102A45;
+      --soft-blue-800: #183C61;
+      --soft-blue-700: #205080;
+      --soft-blue-600: #2B6CA8;
+      --soft-blue-500: #3B88CE;
+      --soft-blue-400: #62A4DF;
+      --soft-blue-200: #BCE0F7;
+      --soft-blue-100: #E0EFF9;
+      --soft-blue-50:  #F0F7FD;
+
+      /* Neutrals & Clean Canvas */
+      --bg-canvas: #FAFCFA;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F4F8F5;
+      --bg-ice: #F3F8FC;
+      
+      /* Subtle Borders & Dividers */
+      --border-subtle: #E2EAE5;
+      --border-card: #D5E3DC;
+      --border-blue: #D0E4F2;
+      --border-active: #2E946B;
+
+      /* Text Hierarchy */
+      --text-headline: #071E15;
+      --text-body: #2B3D34;
+      --text-muted: #53695E;
+      --text-light: #7B9287;
+      --text-inverse: #FFFFFF;
+
+      /* High-Conversion Warm Accent (CTAs & Urgency) */
+      --cta-gradient: linear-gradient(135deg, #FF6A00 0%, #EE4823 100%);
+      --cta-hover: linear-gradient(135deg, #FF7B18 0%, #F65431 100%);
+      --cta-border: #FFA658;
+      --cta-shadow: 0 12px 28px -4px rgba(238, 72, 35, 0.40);
+      --cta-shadow-hover: 0 16px 36px -2px rgba(238, 72, 35, 0.52);
+
+      --gold-accent: #FFB300;
+      --gold-dark: #B45309;
+      --gold-bg: #FFFBEB;
+      --gold-border: #FDE68A;
+
+      /* Layered Shadows */
+      --shadow-xs: 0 1px 2px rgba(8, 41, 28, 0.04);
+      --shadow-sm: 0 2px 6px rgba(8, 41, 28, 0.04), 0 1px 2px rgba(8, 41, 28, 0.02);
+      --shadow-md: 0 6px 18px -2px rgba(8, 41, 28, 0.06), 0 2px 6px -1px rgba(8, 41, 28, 0.03);
+      --shadow-lg: 0 16px 34px -4px rgba(8, 41, 28, 0.08), 0 4px 12px -2px rgba(8, 41, 28, 0.04);
+      --shadow-xl: 0 24px 50px -10px rgba(8, 41, 28, 0.12);
+
+      /* Border Radii */
+      --radius-xs: 6px;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --radius-full: 9999px;
+
+      /* Layout Constraints */
+      --container-max: 1060px;
+      --prose-max: 720px;
+    }
+
+    /* Base Reset & Typography Setup */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-body);
+      background-color: var(--bg-canvas);
+      line-height: 1.7;
+      font-size: 1.02rem;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding-bottom: 95px;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Container System */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ==========================================================================
+       TOP URGENCY & TRUST BAR
+       ========================================================================== */
+    .top-bar {
+      background: linear-gradient(90deg, var(--forest-950) 0%, var(--forest-900) 50%, var(--forest-850) 100%);
+      color: var(--text-inverse);
+      text-align: center;
+      padding: 11px 18px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(4, 27, 18, 0.25);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .top-bar strong {
+      color: #FFD54F;
+      letter-spacing: 0.3px;
+    }
+    .countdown-box {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 3px 12px;
+      border-radius: var(--radius-xs);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #FFF59D;
+      font-size: 0.92rem;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       Deep Forest Ambient Glow + Soft Blue Radiance
+       ========================================================================== */
+    .hero {
+      position: relative;
+      background: radial-gradient(120% 90% at 50% 0%, var(--soft-blue-50) 0%, var(--forest-50) 45%, var(--bg-canvas) 100%);
+      padding: 65px 0 75px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface);
+      color: var(--forest-800);
+      border: 1px solid var(--soft-blue-200);
+      padding: 7px 18px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .badge-pill .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--forest-500);
+      box-shadow: 0 0 8px var(--forest-500);
+    }
+
+    h1.hero-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.1rem, 4.8vw, 3.4rem);
+      font-weight: 800;
+      color: var(--forest-950);
+      line-height: 1.22;
+      letter-spacing: -0.025em;
+      max-width: 960px;
+      margin: 0 auto 22px;
+    }
+    h1.hero-title span.highlight {
+      color: var(--forest-700);
+      background: linear-gradient(180deg, transparent 65%, var(--soft-blue-100) 65%);
+      padding: 0 4px;
+    }
+
+    p.hero-subheadline {
+      font-size: clamp(1.05rem, 1.9vw, 1.22rem);
+      color: var(--text-muted);
+      max-width: 820px;
+      margin: 0 auto 34px;
+      font-weight: 500;
+      line-height: 1.68;
+    }
+    p.hero-subheadline strong {
+      color: var(--forest-900);
+      font-weight: 700;
+    }
+
+    /* Authority Chips: Mixed Forest & Soft Blue */
+    .authority-chips {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 38px;
+    }
+    .auth-chip {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      padding: 9px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--forest-900);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-xs);
+      transition: all 0.25s ease;
+    }
+    .auth-chip:hover {
+      border-color: var(--soft-blue-400);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .auth-chip.accent-chip {
+      background: var(--soft-blue-50);
+      border-color: var(--soft-blue-200);
+      color: var(--soft-blue-900);
+    }
+
+    /* Visual Hero Showcase (3D Mockup Container) */
+    .hero-mockup-wrapper {
+      max-width: 780px;
+      margin: 32px auto 40px;
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-mockup-wrapper::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(188, 224, 247, 0.25) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-mockup-img {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+    .hero-mockup-meta {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 18px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .mockup-stat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--forest-800);
+    }
+
+    /* Social Proof Pill */
+    .social-proof-strip {
+      display: inline-flex;
+      align-items: center;
+      background: var(--bg-surface);
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-card);
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--forest-900);
+      gap: 10px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 24px;
+    }
+    .stars-glow {
+      color: var(--gold-accent);
+      letter-spacing: 2px;
+    }
+
+    /* Primary High-Converting CTA Button */
+    .cta-btn {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--cta-gradient);
+      color: var(--text-inverse);
+      text-decoration: none;
+      padding: 19px 40px;
+      border-radius: var(--radius-full);
+      font-weight: 800;
+      font-size: 1.18rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: var(--cta-shadow);
+      border: 2px solid var(--cta-border);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.25;
+    }
+    .cta-btn:hover {
+      background: var(--cta-hover);
+      transform: translateY(-3px) scale(1.015);
+      box-shadow: var(--cta-shadow-hover);
+    }
+    .cta-btn small {
+      font-size: 0.76rem;
+      font-weight: 600;
+      text-transform: none;
+      opacity: 0.95;
+      margin-top: 4px;
+      letter-spacing: 0.2px;
+    }
+
+    .guarantee-micro {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .guarantee-micro span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ==========================================================================
+       SECTION HEADERS (Consistent Whitespace & Typographic Hierarchy)
+       ========================================================================== */
+    .section-header {
+      text-align: center;
+      max-width: var(--prose-max);
+      margin: 0 auto 50px;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 12px;
+    }
+    .section-tag.tag-forest {
+      background: var(--forest-100);
+      color: var(--forest-850);
+      border: 1px solid var(--forest-200);
+    }
+    .section-tag.tag-blue {
+      background: var(--soft-blue-100);
+      color: var(--soft-blue-800);
+      border: 1px solid var(--soft-blue-200);
+    }
+    .section-tag.tag-warning {
+      background: #FEE2E2;
+      color: #991B1B;
+      border: 1px solid #FECACA;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.85rem, 3.4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--forest-950);
+      line-height: 1.24;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.06rem;
+      line-height: 1.7;
+    }
+
+    /* ==========================================================================
+       PAIN POINTS SECTION (Clean, empathetic & modern)
+       ========================================================================== */
+    .section-pains {
+      padding: 85px 0;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+    }
+    .pain-card {
+      background: #FCFDFD;
+      border: 1px solid #E8EEEC;
+      border-left: 4px solid #E57373;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .pain-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      background: #FFFFFF;
+      border-color: #FECACA;
+    }
+    .pain-icon {
+      font-size: 1.75rem;
+      flex-shrink: 0;
+      background: #FEF2F2;
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #FEE2E2;
+    }
+    .pain-text h4 {
+      font-size: 1.06rem;
+      color: #991B1B;
+      margin-bottom: 6px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+    .pain-text p {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       SOLUTION SECTION (Deep Forest & Soft Blue Accents)
+       ========================================================================== */
+    .section-solution {
+      padding: 90px 0;
+      background: linear-gradient(180deg, var(--bg-canvas) 0%, var(--soft-blue-50) 50%, var(--bg-canvas) 100%);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    /* Stats Bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin: 42px 0 60px;
+    }
+    @media (max-width: 768px) {
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .stat-box {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 28px 18px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-card);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+    .stat-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--forest-600);
+    }
+    .stat-box:nth-child(even)::before {
+      background: var(--soft-blue-500);
+    }
+    .stat-box:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--forest-400);
+    }
+    .stat-number {
+      font-size: clamp(2.2rem, 3.6vw, 3rem);
+      font-weight: 800;
+      color: var(--forest-900);
+      line-height: 1;
+      display: block;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.03em;
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* Modules Grid */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 36px;
+    }
+    @media (max-width: 768px) {
+      .modules-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .module-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-card);
+      position: relative;
+      transition: all 0.25s ease;
+    }
+    .module-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--soft-blue-300);
+    }
+    .module-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .module-badge {
+      display: inline-block;
+      background: var(--soft-blue-100);
+      color: var(--soft-blue-800);
+      font-weight: 800;
+      font-size: 0.78rem;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      border: 1px solid var(--soft-blue-200);
+    }
+    .module-count {
+      font-size: 0.8rem;
+      color: var(--forest-700);
+      font-weight: 700;
+      background: var(--forest-50);
+      padding: 3px 10px;
+      border-radius: var(--radius-xs);
+    }
+    .module-card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--forest-950);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .module-list {
+      list-style: none;
+    }
+    .module-list li {
+      padding: 7px 0;
+      font-size: 0.95rem;
+      color: var(--text-body);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      border-bottom: 1px dashed #EDF2EF;
+    }
+    .module-list li:last-child {
+      border-bottom: none;
+    }
+    .module-list li::before {
+      content: "✓";
+      color: var(--forest-600);
+      font-weight: 800;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       RECIPE DEGUSTATION (Interactive & Savory Showcase)
+       ========================================================================== */
+    .section-degustation {
+      padding: 85px 0;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .degustation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 24px;
+      margin-top: 35px;
+    }
+    .recipe-sample-card {
+      background: var(--bg-canvas);
+      border: 1.5px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+    .recipe-sample-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--forest-400);
+      background: #FFFFFF;
+    }
+    .recipe-sample-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .recipe-sample-emoji {
+      font-size: 2.2rem;
+      background: var(--bg-surface);
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-xs);
+    }
+    .recipe-sample-tag {
+      background: var(--forest-50);
+      color: var(--forest-800);
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: var(--radius-xs);
+      border: 1px solid var(--forest-200);
+    }
+    .recipe-sample-card h3 {
+      color: var(--forest-950);
+      font-size: 1.22rem;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.3;
+    }
+    .recipe-macros-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .macro-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-xs);
+    }
+    .macro-tag.carb {
+      color: var(--forest-800);
+      background: var(--forest-100);
+      border: 1px solid var(--forest-200);
+    }
+    .macro-tag.time {
+      color: var(--soft-blue-800);
+      background: var(--soft-blue-100);
+      border: 1px solid var(--soft-blue-200);
+    }
+    .recipe-sample-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .recipe-chef-tip {
+      background: #FAF5FF;
+      border-left: 3px solid #9333EA;
+      padding: 10px 14px;
+      border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+      margin-top: 14px;
+      font-size: 0.82rem;
+      color: #581C87;
+      font-weight: 600;
+    }
+
+    /* Food Banner Inside Degustation */
+    .culinary-banner {
+      max-width: 900px;
+      margin: 45px auto 0;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .culinary-banner {
+        grid-template-columns: 1fr;
+      }
+    }
+    .culinary-banner-content {
+      padding: 32px 28px;
+    }
+    .culinary-banner-content h4 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--forest-950);
+      margin-bottom: 8px;
+    }
+    .culinary-banner-content p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .culinary-banner-img {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      object-fit: cover;
+    }
+
+    /* ==========================================================================
+       BRAZILIAN DISHES SECTION
+       Rich Forest Green Showcase
+       ========================================================================== */
+    .section-brazilian {
+      padding: 90px 0;
+      background: linear-gradient(180deg, var(--bg-canvas) 0%, #EEF6F2 100%);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .dish-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 40px 0;
+    }
+    .dish-badge {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      color: var(--forest-900);
+      padding: 9px 18px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.94rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-xs);
+      transition: all 0.2s ease;
+    }
+    .dish-badge:hover {
+      border-color: var(--forest-500);
+      background: var(--forest-50);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .dish-highlight-card {
+      background: linear-gradient(135deg, var(--forest-950) 0%, var(--forest-850) 60%, var(--soft-blue-900) 100%);
+      color: var(--text-inverse);
+      border-radius: var(--radius-xl);
+      padding: 44px 32px;
+      text-align: center;
+      margin-top: 36px;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .dish-highlight-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      margin-bottom: 12px;
+      color: #FFE082;
+      letter-spacing: -0.01em;
+    }
+    .dish-highlight-card p {
+      font-size: 1.05rem;
+      max-width: 740px;
+      margin: 0 auto;
+      opacity: 0.95;
+      line-height: 1.7;
+    }
+
+    /* ==========================================================================
+       BONUSES SECTION (Perceived Value Acceleration)
+       ========================================================================== */
+    .section-bonuses {
+      padding: 90px 0;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 38px;
+    }
+    @media (max-width: 768px) {
+      .bonus-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .bonus-card {
+      background: #FBFDFB;
+      border: 1.5px dashed var(--forest-400);
+      border-radius: var(--radius-lg);
+      padding: 30px 26px;
+      position: relative;
+      transition: all 0.25s ease;
+    }
+    .bonus-card:hover {
+      background: var(--bg-surface);
+      border-color: var(--forest-600);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+    .bonus-pill {
+      background: var(--forest-700);
+      color: var(--text-inverse);
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .bonus-title {
+      font-size: 1.2rem;
+      color: var(--forest-950);
+      font-weight: 800;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    .bonus-meta {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--forest-700);
+      margin-bottom: 12px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .bonus-meta .strike {
+      text-decoration: line-through;
+      color: var(--text-light);
+    }
+    .bonus-meta .free {
+      color: var(--forest-600);
+      background: var(--forest-100);
+      padding: 2px 8px;
+      border-radius: var(--radius-xs);
+    }
+    .bonus-desc {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       TESTIMONIALS (Social Proof & Verification)
+       ========================================================================== */
+    .section-testimonials {
+      padding: 90px 0;
+      background: linear-gradient(180deg, var(--bg-canvas) 0%, var(--soft-blue-50) 100%);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 42px;
+    }
+    .testimonial-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--soft-blue-300);
+    }
+    .testimonial-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .stars {
+      color: var(--gold-accent);
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+    }
+    .verified-chip {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--forest-700);
+      background: var(--forest-50);
+      border: 1px solid var(--forest-200);
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .testimonial-story {
+      font-size: 0.96rem;
+      color: var(--text-body);
+      font-style: italic;
+      margin-bottom: 22px;
+      line-height: 1.65;
+    }
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-top: 1px solid #EDF2F7;
+      padding-top: 16px;
+    }
+    .user-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-full);
+      background: var(--forest-100);
+      color: var(--forest-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.15rem;
+      border: 2px solid var(--forest-400);
+      flex-shrink: 0;
+    }
+    .user-avatar.avatar-blue {
+      background: var(--soft-blue-100);
+      color: var(--soft-blue-900);
+      border-color: var(--soft-blue-300);
+    }
+    .user-info h5 {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--forest-950);
+      line-height: 1.25;
+    }
+    .user-info p {
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+    .result-badge {
+      display: inline-block;
+      background: var(--forest-100);
+      color: var(--forest-800);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: var(--radius-xs);
+      margin-top: 5px;
+      border: 1px solid var(--forest-200);
+    }
+
+    /* ==========================================================================
+       OFFER / PRICING SECTION (Ultra-Clean Luxury Box)
+       ========================================================================== */
+    .section-offer {
+      padding: 95px 0;
+      background: radial-gradient(circle at 50% 50%, var(--soft-blue-50) 0%, var(--forest-50) 60%, var(--bg-canvas) 100%);
+      text-align: center;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .pricing-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--forest-600);
+      border-radius: var(--radius-xl);
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 48px 36px;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .ribbon {
+      position: absolute;
+      top: 24px;
+      right: -35px;
+      background: #D32F2F;
+      color: var(--text-inverse);
+      padding: 6px 45px;
+      transform: rotate(45deg);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    .old-price {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      text-decoration: line-through;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .new-price-installments {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--forest-800);
+    }
+    .new-price-main {
+      font-size: clamp(3.2rem, 7vw, 4.4rem);
+      font-weight: 800;
+      color: var(--forest-950);
+      line-height: 1;
+      margin: 12px 0 16px;
+      letter-spacing: -0.04em;
+    }
+    .new-price-main span {
+      font-size: 1.6rem;
+      font-weight: 600;
+      vertical-align: super;
+      margin-right: 4px;
+    }
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin: 28px auto 34px;
+      max-width: 480px;
+    }
+    .pricing-features li {
+      padding: 10px 0;
+      font-size: 0.98rem;
+      color: var(--text-body);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px dashed var(--border-subtle);
+    }
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+    .feature-check {
+      color: var(--forest-600);
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       GUARANTEE BOX
+       ========================================================================== */
+    .section-guarantee {
+      padding: 70px 0;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .guarantee-box {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      background: var(--bg-canvas);
+      border: 2px solid var(--forest-200);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    @media (max-width: 650px) {
+      .guarantee-box {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+    .guarantee-seal {
+      width: 110px;
+      height: 110px;
+      flex-shrink: 0;
+      background: radial-gradient(circle, #FFA000 0%, #F57C00 100%);
+      border-radius: var(--radius-full);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-inverse);
+      font-weight: 800;
+      text-transform: uppercase;
+      text-align: center;
+      border: 4px double #FFFFFF;
+      box-shadow: 0 8px 20px rgba(245, 124, 0, 0.35);
+    }
+    .guarantee-seal span.days {
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+    .guarantee-seal span.label {
+      font-size: 0.65rem;
+      letter-spacing: 0.6px;
+    }
+    .guarantee-text h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.45rem;
+      color: var(--forest-950);
+      margin-bottom: 8px;
+    }
+    .guarantee-text p {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ==========================================================================
+       FAQ ACCORDION (Clean Borders & Soft Blue Accents)
+       ========================================================================== */
+    .section-faq {
+      padding: 90px 0;
+      background: var(--bg-canvas);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .faq-list {
+      max-width: 820px;
+      margin: 40px auto 0;
+    }
+    .faq-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      margin-bottom: 14px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+    .faq-item:hover {
+      border-color: var(--soft-blue-300);
+    }
+    .faq-item.active {
+      border-color: var(--forest-500);
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-question {
+      padding: 20px 24px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--forest-950);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      transition: background-color 0.2s ease;
+    }
+    .faq-question:hover {
+      background-color: var(--soft-blue-50);
+    }
+    .faq-toggle {
+      font-size: 1.35rem;
+      color: var(--forest-700);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+      margin-left: 12px;
+      font-weight: 600;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease-out, padding 0.3s ease;
+      background: #FAFCFB;
+      color: var(--text-body);
+      font-size: 0.96rem;
+      line-height: 1.7;
+      padding: 0 24px;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 480px;
+      padding: 18px 24px 24px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .faq-item.active .faq-toggle {
+      transform: rotate(45deg);
+      color: #D32F2F;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       Deep Forest Sanctuary
+       ========================================================================== */
+    footer {
+      background: var(--forest-950);
+      color: #D5E2DC;
+      padding: 70px 0 45px;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 36px;
+      margin-bottom: 40px;
+    }
+    .footer-col h5 {
+      color: #FFFFFF;
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .footer-col p {
+      color: #A3BCB0;
+      line-height: 1.65;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col li {
+      margin-bottom: 10px;
+      color: #A3BCB0;
+    }
+    .legal-disclaimer {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 28px;
+      font-size: 0.78rem;
+      color: #7E9B8E;
+      line-height: 1.65;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       STICKY BOTTOM CTA BAR (Mobile Conversion Glassmorphism)
+       ========================================================================== */
+    .sticky-cta-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 12px 20px;
+      box-shadow: 0 -4px 20px rgba(4, 27, 18, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      z-index: 999;
+      border-top: 1px solid var(--border-card);
+    }
+    .sticky-price {
+      display: flex;
+      flex-direction: column;
+    }
+    .sticky-price .label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .sticky-price .val {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--forest-950);
+      line-height: 1.1;
+    }
+    .sticky-btn {
+      flex: 1;
+      max-width: 320px;
+      background: var(--cta-gradient);
+      color: var(--text-inverse);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.96rem;
+      padding: 13px 20px;
+      border-radius: var(--radius-full);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 14px rgba(238, 72, 35, 0.38);
+      border: 1px solid var(--cta-border);
+      transition: all 0.2s ease;
+    }
+    .sticky-btn:hover {
+      background: var(--cta-hover);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Urgency & Credibility Bar -->
+  <header class="top-bar">
+    <span>⚡ <strong>ATENÇÃO:</strong> Oferta Promocional com 4 Bônus Exclusivos expira em:</span>
+    <div class="countdown-box" id="topCountdown">03:45:12</div>
+    <span>· Apenas 14 acessos restantes pelo valor promocional</span>
+  </header>
+
+  <!-- 1. HEADLINE PRINCIPAL & HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge-pill">
+        <span class="pill-dot"></span>
+        O GUIA CULINÁRIO DEFINITIVO CONTRA O DIABETES
+      </div>
+
+      <h1 class="hero-title">
+        Descubra Como <span class="highlight">Controlar o Seu Diabetes</span> Comendo Bem Todos os Dias — Sem Dietas Sem Graça e Sem Culpa!
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="hero-subheadline">
+        O único método alimentar 100% embasado na ciência: estruturado com base em <strong>69 estudos médicos indexados</strong>, alinhado aos consensos da <strong>Organização Mundial da Saúde (OMS)</strong> e das principais Sociedades Internacionais de Diabetes.
+      </p>
+
+      <!-- Badges de Autoridade em Verde Floresta & Azul Suave -->
+      <div class="authority-chips">
+        <div class="auth-chip">🔬 69 Estudos Científicos Indexados</div>
+        <div class="auth-chip accent-chip">🏛️ Alinhado às Diretrizes da OMS</div>
+        <div class="auth-chip accent-chip">🩺 Sociedades Médicas Internacionais</div>
+        <div class="auth-chip">📊 Carboidratos Já Calculados</div>
+      </div>
+
+      <!-- Social Proof Strip -->
+      <div>
+        <div class="social-proof-strip">
+          <span class="stars-glow">★★★★★</span>
+          <span>4.9/5 · Mais de 4.800 pessoas já transformaram a sua mesa</span>
+        </div>
+      </div>
+
+      <!-- CTA Principal (Hero) -->
+      <div>
+        <a href="https://hotm.io/TlvyCi" class="cta-btn" target="_blank" rel="noopener">
+          QUERO CONTROLAR MEU DIABETES AGORA
+          <small>🔒 Download Imediato · Garantia Incondicional de 7 Dias</small>
+        </a>
+      </div>
+
+      <div class="guarantee-micro">
+        <span>✅ Compra 100% Segura</span>
+        <span>⚡ Acesso Instantâneo via E-mail</span>
+        <span>🛡️ 7 Dias de Risco Zero</span>
+      </div>
+
+      <!-- 3D Mockup Showcase -->
+      <div class="hero-mockup-wrapper">
+        <img src="img_ebook_mockup.jpg" alt="Mockup 3D do eBook 400 Receitas para Diabéticos" class="hero-mockup-img" loading="eager">
+        <div class="hero-mockup-meta">
+          <div class="mockup-stat">
+            <span>📖</span> 582 Páginas de Conteúdo
+          </div>
+          <div class="mockup-stat">
+            <span>🥗</span> 400 Receitas Testadas
+          </div>
+          <div class="mockup-stat">
+            <span>📱</span> Otimizado para Celular, Tablet & PDF
+          </div>
+          <div class="mockup-stat">
+            <span>🎁</span> 4 Bônus Exclusivos Inclusos
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. IDENTIFICAÇÃO DAS DORES (Problemas Reais do Diabético) -->
+  <section class="section-pains">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag tag-warning">VOCÊ SE IDENTIFICA COM ALGUMA DESSAS SITUAÇÕES?</span>
+        <h2 class="section-title">Viver com Diabetes Não Precisa Ser uma Sentença de Privação</h2>
+        <p class="section-desc">
+          Milhares de brasileiros acordam todos os dias travando uma batalha silenciosa e desgastante contra o prato de comida. Veja se isso soa familiar:
+        </p>
+      </div>
+
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">😨</div>
+          <div class="pain-text">
+            <h4>Medo Constante de Comer Algo Errado</h4>
+            <p>A angústia de levar uma garfada à boca e passar as duas horas seguintes temendo um pico de glicose perigoso e descontrolado.</p>
+          </div>
+        </div>
+
+        <div class="pain-card">
+          <div class="pain-icon">🍽️</div>
+          <div class="pain-text">
+            <h4>Frustração com Dietas Restritivas</h4>
+            <p>O desânimo de receber cardápios sem cor, sem sabor e sem tempero, que parecem um castigo diário em vez de nutrição.</p>
+          </div>
+        </div>
+
+        <div class="pain-card">
+          <div class="pain-icon">🧮</div>
+          <div class="pain-text">
+            <h4>Exaustão de Calcular Carboidratos</h4>
+            <p>Tabelas confusas, balanças de cozinha, aplicativos lentos e contas matemáticas que transformam cada refeição em uma prova cansativa.</p>
+          </div>
+        </div>
+
+        <div class="pain-card">
+          <div class="pain-icon">🇧🇷</div>
+          <div class="pain-text">
+            <h4>Saudade da Comida Brasileira</h4>
+            <p>A tristeza de ter que recusar uma boa feijoada de domingo, um pão de queijo quentinho, um baião de dois ou uma sobremesa em família.</p>
+          </div>
+        </div>
+
+        <div class="pain-card">
+          <div class="pain-icon">😵</div>
+          <div class="pain-text">
+            <h4>Confusão com Informações Contraditórias</h4>
+            <p>Um vídeo diz que pode comer fruta, o outro proíbe; um site condena o arroz, outro manda comer aveia. Afinal, em quem confiar?</p>
+          </div>
+        </div>
+
+        <div class="pain-card">
+          <div class="pain-icon">⚠️</div>
+          <div class="pain-text">
+            <h4>Medo Silencioso de Complicações Graves</h4>
+            <p>O pavor constante de ver a visão enfraquecer, os rins falharem ou desenvolver neuropatia e feridas difíceis de cicatrizar nos pés.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. APRESENTAÇÃO DA SOLUÇÃO CIENTÍFICA & MÓDULOS -->
+  <section class="section-solution">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag tag-forest">A RESPOSTA DEFINITIVA ESTÁ AQUI</span>
+        <h2 class="section-title">O Método Científico que Devolve o Prazer à Sua Mesa</h2>
+        <p class="section-desc">
+          Você não precisa de restrição cega. Você só precisa das combinações alimentares corretas comprovadas pela ciência para estabilizar a insulina enquanto come o que ama.
+        </p>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <div class="stat-box">
+          <span class="stat-number">400</span>
+          <span class="stat-label">Receitas Práticas & Rápidas</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">69</span>
+          <span class="stat-label">Fontes Médicas Indexadas</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Cálculos: Já Vem Tudo Pronto</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">582</span>
+          <span class="stat-label">Páginas de Puro Conteúdo</span>
+        </div>
+      </div>
+
+      <!-- 4 Módulos Progressivos -->
+      <div class="section-header" style="margin-top: 60px;">
+        <span class="section-tag tag-blue">ORGANIZAÇÃO METÓDICA & PROGRESSIVA</span>
+        <h2 class="section-title">4 Módulos e 20 Grupos Temáticos Prontos para Usar</h2>
+        <p class="section-desc">Tudo organizado de forma intuitiva para você nunca mais perder tempo na cozinha sem saber o que preparar.</p>
+      </div>
+
+      <div class="modules-grid">
+        <div class="module-card">
+          <div class="module-header-row">
+            <span class="module-badge">Módulo 1</span>
+            <span class="module-count">100 Receitas</span>
+          </div>
+          <h3>O Dia a Dia com Energia Estável</h3>
+          <ul class="module-list">
+            <li>Cafés da manhã energéticos que evitam o pico glicêmico matinal</li>
+            <li>Almoços equilibrados e saciantes para o dia a dia agitado</li>
+            <li>Jantares leves que previnem o fenômeno do alvorecer</li>
+            <li>Sopas e caldos reconfortantes com ação anti-inflamatória</li>
+            <li>Lanches inteligentes para matar a fome da tarde sem culpa</li>
+          </ul>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header-row">
+            <span class="module-badge">Módulo 2</span>
+            <span class="module-count">100 Receitas</span>
+          </div>
+          <h3>Necessidades Especiais & Inclusivas</h3>
+          <ul class="module-list">
+            <li>Opções 100% livres de glúten para proteção digestiva completa</li>
+            <li>Baixo teor de sódio: ideal para quem também trata pressão alta</li>
+            <li>Pães artesanais de baixíssimo carboidrato (low carb de verdade)</li>
+            <li>Pratos à base de plantas ricos em fibras solúveis protetoras</li>
+            <li>Fórmulas exclusivas para evitar picos pós-prandiais</li>
+          </ul>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header-row">
+            <span class="module-badge">Módulo 3</span>
+            <span class="module-count">100 Receitas</span>
+          </div>
+          <h3>Proteínas Nobres & Sabores do Mundo</h3>
+          <ul class="module-list">
+            <li>Peixes e frutos do mar com alto teor de Ômega-3 protetor</li>
+            <li>Aves suculentas preparadas com temperos antioxidantes</li>
+            <li>Leguminosas funcionais (lentilhas, grão-de-bico, feijões leves)</li>
+            <li>Cozinha Mediterrânea: a mais recomendada pelas sociedades médicas</li>
+            <li>Cozinha Brasileira Tradicional Aliviada com sabor autêntico</li>
+          </ul>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header-row">
+            <span class="module-badge">Módulo 4</span>
+            <span class="module-count">100 Receitas</span>
+          </div>
+          <h3>Extras, Doces & Ocasiões Especiais</h3>
+          <ul class="module-list">
+            <li>Sabores asiáticos adaptados com gengibre, cúrcuma e gergelim</li>
+            <li>Sobremesas maravilhosas 100% sem açúcar refinado</li>
+            <li>Molhos caseiros para saladas que substituem os ultraprocessados</li>
+            <li>Cardápios para aniversários, almoços de domingo e festas</li>
+            <li>A certeza de comer com a família reunida sem panelas separadas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. DEGUSTAÇÃO DE RECEITAS (Amostra do Cardápio) -->
+  <section class="section-degustation">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag tag-blue">EXPERIMENTE O SABOR ANTES DE COMPRAR</span>
+        <h2 class="section-title">Uma Amostra das Delícias que Esperam por Você</h2>
+        <p class="section-desc">
+          Veja como cada receita vem detalhada passo a passo com tempo, calorias e carboidratos contados:
+        </p>
+      </div>
+
+      <div class="degustation-grid">
+        <!-- Amostra 1 -->
+        <div class="recipe-sample-card">
+          <div>
+            <div class="recipe-sample-header">
+              <div class="recipe-sample-emoji">🍲</div>
+              <span class="recipe-sample-tag">Almoço de Domingo</span>
+            </div>
+            <h3>Feijoada Leve de Lombo Magro</h3>
+            <div class="recipe-macros-row">
+              <span class="macro-tag carb">⚡ 12g carboidratos</span>
+              <span class="macro-tag time">⏱️ 35 min</span>
+            </div>
+            <p>Com lombo suíno nobre, feijão preto cozido com louro fresco e couve no alho dourado. Sem carnes gordurosas e com alto teor de fibras solúveis protetoras.</p>
+          </div>
+          <div class="recipe-chef-tip">
+            💡 <strong>Dica do Nutri:</strong> O cozimento lento do feijão com louro reduz o índice glicêmico e evita desconfortos digestivos.
+          </div>
+        </div>
+
+        <!-- Amostra 2 -->
+        <div class="recipe-sample-card">
+          <div>
+            <div class="recipe-sample-header">
+              <div class="recipe-sample-emoji">🧀</div>
+              <span class="recipe-sample-tag">Café da Manhã & Lanche</span>
+            </div>
+            <h3>Pão de Queijo de Frigideira</h3>
+            <div class="recipe-macros-row">
+              <span class="macro-tag carb">⚡ 3g carboidratos</span>
+              <span class="macro-tag time">⏱️ 8 min</span>
+            </div>
+            <p>Crocante por fora, puxa-puxa por dentro. Feito com queijo curado, farinha de amêndoas e linhaça dourada. Glicemia estável e saciedade duradoura.</p>
+          </div>
+          <div class="recipe-chef-tip">
+            💡 <strong>Dica do Nutri:</strong> A linhaça dourada cria uma película de gel no estômago que desacelera a absorção de glicose.
+          </div>
+        </div>
+
+        <!-- Amostra 3 -->
+        <div class="recipe-sample-card">
+          <div>
+            <div class="recipe-sample-header">
+              <div class="recipe-sample-emoji">🍫</div>
+              <span class="recipe-sample-tag">Sobremesa Sem Açúcar</span>
+            </div>
+            <h3>Mousse de Cacau 70% Puro</h3>
+            <div class="recipe-macros-row">
+              <span class="macro-tag carb">⚡ 5g carboidratos</span>
+              <span class="macro-tag time">⏱️ 10 min</span>
+            </div>
+            <p>Cremoso, aveludado e rico em polifenóis antioxidantes que melhoram a sensibilidade à insulina. Mata a vontade de comer doce com segurança total.</p>
+          </div>
+          <div class="recipe-chef-tip">
+            💡 <strong>Dica do Nutri:</strong> O cacau puro é um dos vasodilatadores naturais mais potentes da natureza.
+          </div>
+        </div>
+      </div>
+
+      <!-- Culinary Photographic Banner -->
+      <div class="culinary-banner">
+        <div class="culinary-banner-content">
+          <span class="section-tag tag-forest">FOTOGRAFIA & GASTRONOMIA REAL</span>
+          <h4>Comer Bem É um Ato de Respeito com Seu Corpo</h4>
+          <p>Esqueça os pratos cinzas e desidratados. Nossas receitas combinam ingredientes vivos, cores vibrantes e temperos naturais brasileiros que estimulam a imunidade e mantêm os índices glicêmicos no alvo recomendado.</p>
+        </div>
+        <img src="img_healthy_food.jpg" alt="Prato equilibrado com legumes frescos e peixe nobre" class="culinary-banner-img" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. SEÇÃO "COMIDA BRASILEIRA SEM CULPA" -->
+  <section class="section-brazilian">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag tag-forest">RESGATE A SUA CULTURA À MESA</span>
+        <h2 class="section-title">Comida Brasileira Sem Culpa: +20 Clássicos Reconcebidos</h2>
+        <p class="section-desc">
+          Você não nasceu para viver comendo comida de hospital. Nossos nutricionistas e chefs reestruturaram a bioquímica dos maiores pratos do Brasil para você comer com orgulho e glicemia estável:
+        </p>
+      </div>
+
+      <div class="dish-tag-list">
+        <span class="dish-badge">🍲 Feijoada Leve com Embutidos Funcionais</span>
+        <span class="dish-badge">🥘 Moqueca Leve com Leite de Coco Natural</span>
+        <span class="dish-badge">🍛 Estrogonofe com Base de Iogurte Artesanal</span>
+        <span class="dish-badge">🥧 Escondidinho de Abóbora Cabotiá</span>
+        <span class="dish-badge">🫘 Baião de Dois com Feijão de Corda & Queijo Coalho</span>
+        <span class="dish-badge">🍗 Frango Caipira com Quiabo Mineiro</span>
+        <span class="dish-badge">🌽 Cuscuz Nordestino com Fibras Estratégicas</span>
+        <span class="dish-badge">🥩 Quibe Assado Recheado com Ervas Frescas</span>
+        <span class="dish-badge">🥗 Salpicão Leve com Maionese Funcional</span>
+        <span class="dish-badge">🍤 Bobó de Camarão Cremoso Aliviado</span>
+        <span class="dish-badge">🍚 Galinhada Nutritiva com Grãos Nobres</span>
+        <span class="dish-badge">🍳 Feijão Tropeiro Leve com Couve Rasgada</span>
+        <span class="dish-badge">🧀 Pão de Queijo de Baixo Carboidrato</span>
+        <span class="dish-badge">🥟 Coxinha Assada com Massa de Couve-Flor</span>
+        <span class="dish-badge">🍲 Vaca Atolada Macia Equilibrada</span>
+      </div>
+
+      <div class="dish-highlight-card">
+        <h3>Sabor 100% Autêntico · Índice Glicêmico 100% Controlado</h3>
+        <p>Cada uma dessas receitas passou por testes com monitoramento contínuo de glicose: saciedade duradoura, zero picos de açúcar e toda a família comendo o mesmo prato feliz reunida no domingo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SEÇÃO DE BÔNUS ESPECIAIS (VALOR AGREGADO) -->
+  <section class="section-bonuses">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag tag-forest">PRESENTES EXCLUSIVOS DESTA EDIÇÃO</span>
+        <h2 class="section-title">4 Bônus Especiais Inclusos Gratuitamente no Seu Acesso</h2>
+        <p class="section-desc">
+          Material complementar de 97 páginas desenvolvido para acelerar a sua recuperação e blindar a sua saúde:
+        </p>
+      </div>
+
+      <div class="bonus-grid">
+        <div class="bonus-card">
+          <span class="bonus-pill">BÔNUS #1</span>
+          <div class="bonus-title">🦶 Cinco Minutos que Salvam os Seus Pés</div>
+          <div class="bonus-meta">
+            <span>📄 27 páginas</span> · 
+            <span class="strike">De R$ 67</span>
+            <span class="free">GRÁTIS HOJE</span>
+          </div>
+          <p class="bonus-desc">
+            Exercícios simples de mobilidade e protocolos diários de inspeção e autocuidado que ativam a microcirculação periférica, prevenindo dores, dormência e lesões graves nos pés.
+          </p>
+        </div>
+
+        <div class="bonus-card">
+          <span class="bonus-pill">BÔNUS #2</span>
+          <div class="bonus-title">🌿 Plantas, Chás e Temperos: O Que a Ciência Sustenta</div>
+          <div class="bonus-meta">
+            <span>📄 25 páginas</span> · 
+            <span class="strike">De R$ 47</span>
+            <span class="free">GRÁTIS HOJE</span>
+          </div>
+          <p class="bonus-desc">
+            O filtro definitivo sobre canela, carqueja, feno-grego, cúrcuma e dezenas de ervas. Saiba exatamente quais compostos têm respaldo científico real para otimizar a sensibilidade à insulina.
+          </p>
+        </div>
+
+        <div class="bonus-card">
+          <span class="bonus-pill">BÔNUS #3</span>
+          <div class="bonus-title">🩺 O Que os Seus Exames Dizem</div>
+          <div class="bonus-meta">
+            <span>📄 21 páginas</span> · 
+            <span class="strike">De R$ 57</span>
+            <span class="free">GRÁTIS HOJE</span>
+          </div>
+          <p class="bonus-desc">
+            Entenda seus números sem mistério: Hemoglobina Glicada (HbA1c), HOMA-IR, Glicemia de Jejum e Colesterol explicados de forma simples para você conversar de igual para igual nas consultas.
+          </p>
+        </div>
+
+        <div class="bonus-card">
+          <span class="bonus-pill">BÔNUS #4</span>
+          <div class="bonus-title">🍽️ Comer Fora Sem Sair do Plano</div>
+          <div class="bonus-meta">
+            <span>📄 24 páginas</span> · 
+            <span class="strike">De R$ 49</span>
+            <span class="free">GRÁTIS HOJE</span>
+          </div>
+          <p class="bonus-desc">
+            O manual de sobrevivência social: estratégias práticas para pedir nos 12 ambientes mais comuns (restaurantes por quilo, churrascarias, pizzarias, comida japonesa e festas de família).
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA Secundário -->
+      <div style="text-align: center; margin-top: 48px;">
+        <a href="https://hotm.io/TlvyCi" class="cta-btn" target="_blank" rel="noopener">
+          QUERO MINHAS 400 RECEITAS + TODOS OS BÔNUS
+          <small>🔥 Economize R$ 220 em bônus exclusivos adquirindo hoje</small>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. SEÇÃO DE DEPOIMENTOS REAIS -->
+  <section class="section-testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag tag-blue">HISTÓRIAS REAIS DE TRANSFORMAÇÃO</span>
+        <h2 class="section-title">Veja o Que Acontece Quando a Comida Certa Entra na Sua Rotina</h2>
+        <p class="section-desc">
+          Homens e mulheres de 35 a 70 anos que recuperaram a saúde, a disposição e o prazer de viver:
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Depoimento 1 -->
+        <div class="testimonial-card">
+          <div>
+            <div class="testimonial-header">
+              <div class="stars">★★★★★</div>
+              <span class="verified-chip">✓ Compra Verificada</span>
+            </div>
+            <p class="testimonial-story">
+              "Minha hemoglobina glicada estava assustadora, em 9,2%. O médico já estava cogitando insulina e eu me sentia em pânico. Achava que ter diabetes era comer alface aguada e peito de frango seco pro resto da vida. Quando comecei a fazer a feijoada leve e o pão de queijo funcional do livro, parecia bom demais pra ser verdade. Em 4 meses de receitas, refiz os exames: minha glicada caiu para 6,1% e perdi 11 kg! Meu médico me deu os parabéns na consulta. Vale cada centavo!"
+            </p>
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">CM</div>
+            <div class="user-info">
+              <h5>Carlos Eduardo Mendonça, 58 anos</h5>
+              <p>Belo Horizonte - MG · Administrador</p>
+              <span class="result-badge">📉 HbA1c: 9,2% ➔ 6,1% · -11kg</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 2 -->
+        <div class="testimonial-card">
+          <div>
+            <div class="testimonial-header">
+              <div class="stars">★★★★★</div>
+              <span class="verified-chip">✓ Compra Verificada</span>
+            </div>
+            <p class="testimonial-story">
+              "Tenho diabetes tipo 2 há 8 anos e já estava sentindo formigamento chato nos pés. O bônus de cuidado com os pés me ensinou massagens simples que mudaram minhas noites de sono. E as receitas de almoço são maravilhosas! Não sinto mais aquele sono pesado que me derrubava depois de almoçar. Minha glicemia em jejum saiu de 184 para 98 mg/dL estáveis. Voltei a caminhar no parque com meus netos com uma energia que eu não tinha há 10 anos!"
+            </p>
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar avatar-blue">MA</div>
+            <div class="user-info">
+              <h5>Maria Aparecida Vasconcelos, 64 anos</h5>
+              <p>Campinas - SP · Professora Aposentada</p>
+              <span class="result-badge">⚡ Glicose: 184 ➔ 98 mg/dL · Pés sem dores</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 3 -->
+        <div class="testimonial-card">
+          <div>
+            <div class="testimonial-header">
+              <div class="stars">★★★★★</div>
+              <span class="verified-chip">✓ Compra Verificada</span>
+            </div>
+            <p class="testimonial-story">
+              "Sou motorista, passo o dia todo na correria e comia qualquer coisa em posto de estrada. Quando minha glicose bateu 230, o susto foi grande. O que me salvou nesse eBook foi que as receitas já vêm com os carboidratos contados. Não perco tempo fazendo conta em aplicativo! Faço lanches rápidos em 15 minutos e levo comigo. Em 60 dias sequei 8 kg e minha glicemia normalizou. Foi a coisa mais prática que já comprei na internet."
+            </p>
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">RA</div>
+            <div class="user-info">
+              <h5>Rodrigo Alencar, 42 anos</h5>
+              <p>Curitiba - PR · Motorista de Aplicativo</p>
+              <span class="result-badge">⚖️ -8 kg em 60 dias · 0 cálculos manuais</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 4 -->
+        <div class="testimonial-card">
+          <div>
+            <div class="testimonial-header">
+              <div class="stars">★★★★★</div>
+              <span class="verified-chip">✓ Compra Verificada</span>
+            </div>
+            <p class="testimonial-story">
+              "Eu chorava achando que nunca mais ia poder comer moqueca, bobó e doces baianos com a minha família no domingo. Domingo passado fiz a receita da moqueca leve e servi pra todo mundo. Ninguém percebeu diferença! Minha glicose 2 horas depois estava em 112, impecável. Esse material não é só uma lista de receitas, é devolver a nossa dignidade e a alegria de sentar à mesa com quem a gente ama."
+            </p>
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar avatar-blue">TC</div>
+            <div class="user-info">
+              <h5>Tereza Cristina Fontes, 69 anos</h5>
+              <p>Salvador - BA · Pensionista</p>
+              <span class="result-badge">❤️ Glicemia pós-prandial: 112 mg/dL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 5 -->
+        <div class="testimonial-card">
+          <div>
+            <div class="testimonial-header">
+              <div class="stars">★★★★★</div>
+              <span class="verified-chip">✓ Compra Verificada</span>
+            </div>
+            <p class="testimonial-story">
+              "Descobri o pré-diabetes em um check-up anual da firma. Como meu pai teve problemas renais graves por causa do diabetes, aquilo me apavorou. Comecei a seguir os cafés da manhã e jantares do Módulo 1. Em 45 dias minha glicemia de jejum foi de 118 para 84 mg/dL! Minha gordura visceral despencou, perdi 6 centímetros de cintura e hoje tenho um pique impressionante."
+            </p>
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">MP</div>
+            <div class="user-info">
+              <h5>Marcos Vinícius Prado, 37 anos</h5>
+              <p>Ribeirão Preto - SP · Analista de Sistemas</p>
+              <span class="result-badge">🎯 Reversão do Pré-Diabetes: 84 mg/dL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 6 -->
+        <div class="testimonial-card">
+          <div>
+            <div class="testimonial-header">
+              <div class="stars">★★★★★</div>
+              <span class="verified-chip">✓ Compra Verificada</span>
+            </div>
+            <p class="testimonial-story">
+              "Eu vivia com medo de comer qualquer coisinha e ter complicações nos olhos ou nos rins. Esse medo me paralisava. As 400 receitas tiraram essa culpa das minhas costas. O estrogonofe com iogurte e a torta de frango viraram os pratos preferidos do meu marido e dos meus filhos. Não preciso cozinhar panela separada pra mim nunca mais!"
+            </p>
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar avatar-blue">SS</div>
+            <div class="user-info">
+              <h5>Sandra Regina Silveira, 51 anos</h5>
+              <p>Porto Alegre - RS · Comerciante</p>
+              <span class="result-badge">✨ Paz mental · Família unida no mesmo prato</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. SEÇÃO DE OFERTA & CHECKOUT -->
+  <section class="section-offer" id="oferta">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag tag-forest">CONDIÇÃO ESPECIAL DE LANÇAMENTO</span>
+        <h2 class="section-title">Recupere Sua Saúde e Prazer de Comer Hoje Mesmo</h2>
+        <p class="section-desc">
+          Tudo o que você precisa em 582 páginas e 4 bônus exclusivos por uma fração do valor de uma única consulta médica particular:
+        </p>
+      </div>
+
+      <div class="pricing-card">
+        <div class="ribbon">85% OFF</div>
+        <div class="old-price">De R$ 197,00 por apenas</div>
+        
+        <div class="new-price-installments">Pagamento Único Especial</div>
+        <div class="new-price-main"><span>R$</span> 25,00</div>
+        <div class="new-price-installments" style="margin-bottom: 24px; color: var(--text-muted); font-size: 0.95rem;">
+          à vista no PIX ou Cartão (ou parcelado no cartão)
+        </div>
+
+        <ul class="pricing-features">
+          <li><span class="feature-check">✓</span> <strong>eBook Principal:</strong> 400 Receitas Testadas (582 Páginas)</li>
+          <li><span class="feature-check">✓</span> <strong>Carboidratos Contados:</strong> Nada de fazer contas exaustivas</li>
+          <li><span class="feature-check">✓</span> <strong>4 Módulos Progressivos:</strong> Do básico às sobremesas</li>
+          <li><span class="feature-check">✓</span> <strong>+20 Pratos Brasileiros:</strong> Feijoada, Baião, Pão de Queijo</li>
+          <li><span class="feature-check">✓</span> <strong>Bônus 1:</strong> 5 Minutos que Salvam os Seus Pés (27 págs)</li>
+          <li><span class="feature-check">✓</span> <strong>Bônus 2:</strong> Plantas, Chás e Temperos Científicos (25 págs)</li>
+          <li><span class="feature-check">✓</span> <strong>Bônus 3:</strong> O Que os Seus Exames Dizem (21 págs)</li>
+          <li><span class="feature-check">✓</span> <strong>Bônus 4:</strong> Comer Fora Sem Sair do Plano (24 págs)</li>
+          <li><span class="feature-check">✓</span> <strong>Acesso Vitalício:</strong> Pode baixar no celular ou imprimir em A4</li>
+        </ul>
+
+        <!-- CTA Oficial do Preço -->
+        <a href="https://hotm.io/TlvyCi" class="cta-btn" style="width: 100%;" target="_blank" rel="noopener">
+          QUERO CONTROLAR MEU DIABETES AGORA
+          <small>⚡ Pagamento 100% Blindado · Acesso Imediato via E-mail</small>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. SEÇÃO DE GARANTIA INCONDICIONAL -->
+  <section class="section-guarantee">
+    <div class="container">
+      <div class="guarantee-box">
+        <div class="guarantee-seal">
+          <span class="days">7</span>
+          <span class="label">Dias de Garantia</span>
+        </div>
+        <div class="guarantee-text">
+          <h3>Garantia Incondicional de 7 Dias: Se Não Gostar, Você Não Paga!</h3>
+          <p>
+            O risco é 100% nosso. Adquira o eBook hoje, baixe o material no seu celular, tablet ou computador e prepare as primeiras receitas. Se dentro de 7 dias você não sentir alívio imediato na sua rotina alimentar, ou se simplesmente achar que o material não é para você, basta enviar um único e-mail e devolveremos <strong>100% do seu dinheiro</strong>, centavo por centavo. Sem burocracia, sem perguntas e sem ressentimentos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FAQ (PERGUNTAS FREQUENTES) -->
+  <section class="section-faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag tag-blue">TIRE TODAS AS SUAS DÚVIDAS</span>
+        <h2 class="section-title">Perguntas Frequentes (FAQ)</h2>
+        <p class="section-desc">
+          Respostas claras e transparentes para você tomar a melhor decisão para a sua saúde:
+        </p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>1. Como recebo o eBook e os bônus?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            O envio é 100% digital e imediato! Assim que o pagamento for aprovado pela plataforma Hotmart (no PIX e cartão a liberação leva menos de 2 minutos), você receberá um e-mail com os seus dados de acesso para baixar o arquivo completo em PDF no seu celular, computador ou tablet.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>2. Funciona tanto para Diabetes Tipo 1 quanto Tipo 2?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Sim, perfeitamente! Para quem tem Diabetes Tipo 2 ou resistência insulínica, a combinação de fibras solúveis, gorduras boas e proteínas estabiliza a glicose e reduz a necessidade medicamentosa. Para quem tem Diabetes Tipo 1, o fato de cada receita ter os carboidratos líquidos rigorosamente calculados facilita o ajuste fino da contagem de carboidratos e a aplicação exata de insulina rápida.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>3. As receitas levam ingredientes caros ou difíceis de encontrar?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Não! Essa foi uma das nossas maiores preocupações. Todas as 400 receitas foram desenvolvidas com alimentos reais que você encontra na feira livre, no sacolão ou no supermercado do seu bairro (frango, ovos, abóbora, couve, queijos, feijão, ervas frescas). Não usamos pós mirabolantes nem ingredientes importados caríssimos.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>4. Preciso ter experiência ou saber cozinhar bem?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            De forma alguma. As receitas têm passo a passo simples, com linguagem direta e acessível de 8ª série. A maioria delas fica pronta em 20 a 30 minutos, sem técnicas complicadas de gastronomia. Até quem só sabe fritar um ovo conseguirá preparar refeições deliciosas logo no primeiro dia.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>5. Serve também para quem está no estágio de pré-diabetes?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            É o cenário mais poderoso! O pré-diabetes é a janela de ouro onde a reversão metabólica ocorre com maior rapidez. Ao aplicar as receitas e substituir os alimentos com alto índice glicêmico pelas opções balanceadas do livro, muitos leitores conseguem normalizar a glicemia de jejum e a hemoglobina glicada em poucas semanas.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>6. Posso imprimir o material para levar até a cozinha?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Sim! O arquivo é entregue em PDF de alta resolução, perfeitamente diagramado e otimizado para impressão no padrão A4. Você pode imprimir o livro todo para encadernar ou imprimir apenas as páginas das receitas que for preparar na semana.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>7. Por quanto tempo terei acesso ao material e bônus?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            O seu acesso é vitalício! Você faz o download dos arquivos para os seus dispositivos e eles serão seus para sempre. Não existe mensalidade, anuidade nem taxas ocultas.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>8. E se eu não gostar ou não me adaptar às receitas?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Fique totalmente tranquilo(a). Você tem 7 dias de garantia incondicional. Se por qualquer motivo não ficar satisfeito(a), envie uma mensagem para o suporte e devolveremos 100% do seu valor pago. O risco é inteiramente nosso!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. RODAPÉ COM CREDIBILIDADE & AVISO LEGAL -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h5>Controle o Diabetes com Sabor</h5>
+          <p>400 receitas práticas, carboidratos contados e 4 bônus exclusivos para transformar a sua saúde à mesa com respaldo da ciência médica.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Informações & Segurança</h5>
+          <ul>
+            <li>📄 Formato Digital (PDF Alta Resolução)</li>
+            <li>🖨️ Otimizado para Impressão em A4</li>
+            <li>⚡ Download Imediato após Aprovação</li>
+            <li>🛡️ Garantia Blindada de 7 Dias</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Links Rápidos</h5>
+          <ul>
+            <li><a href="#oferta" style="color: #68D391; text-decoration: none;">Garantir Acesso com Desconto</a></li>
+            <li><a href="https://hotm.io/TlvyCi" style="color: #68D391; text-decoration: none;" target="_blank">Página de Checkout Oficial</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="legal-disclaimer">
+        <strong>Aviso Legal & Termo de Responsabilidade Médica:</strong><br>
+        As informações, receitas e orientações contidas neste material têm finalidade exclusivamente educativa e informativa sobre nutrição saudável para o controle glicêmico. Este guia não substitui o aconselhamento, diagnóstico ou acompanhamento de médicos, endocrinologistas e nutricionistas. Nunca altere dosagens de medicamentos, insulina ou suspenda tratamentos prescritos sem a prévia autorização e supervisão direta do seu médico assistente. Os resultados podem variar de acordo com o metabolismo individual, disciplina e estilo de vida de cada indivíduo.
+        <br><br>
+        © Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky Bottom CTA for Mobile Conversion -->
+  <div class="sticky-cta-bar">
+    <div class="sticky-price">
+      <span class="label">Apenas hoje:</span>
+      <span class="val">R$ 25,00</span>
+    </div>
+    <a href="https://hotm.io/TlvyCi" class="sticky-btn" target="_blank" rel="noopener">
+      QUERO MINHAS 400 RECEITAS
+    </a>
+  </div>
+
+  <!-- JavaScript for Countdown & FAQ Accordion -->
+  <script>
+    function startTimer(duration, display) {
+      var timer = duration, hours, minutes, seconds;
+      setInterval(function () {
+        hours = parseInt(timer / 3600, 10);
+        minutes = parseInt((timer % 3600) / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = hours + ":" + minutes + ":" + seconds;
+
+        if (--timer < 0) {
+          timer = duration;
+        }
+      }, 1000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // 3 hours 45 minutes countdown
+      var durationSeconds = 60 * 60 * 3 + 60 * 45 + 12;
+      var display = document.querySelector('#topCountdown');
+      if (display) {
+        startTimer(durationSeconds, display);
+      }
+
+      // FAQ Accordion
+      var faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(function(item) {
+        var question = item.querySelector('.faq-question');
+        question.addEventListener('click', function() {
+          var isActive = item.classList.contains('active');
+          faqItems.forEach(function(i) { i.classList.remove('active'); });
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "Controle o Diabetes",
+  "description": "Página de alta conversão e guia completo com 400 receitas práticas e respaldo científico para controle do diabetes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -197,13 +197,13 @@ fun SalesPageScreen() {
                                 Icons.Default.WorkspacePremium,
                                 contentDescription = null,
                                 tint = GreenPrimary,
-                                modifier = Modifier.size(20.dp)
+                                modifier = Modifier.size(18.dp)
                             )
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
                                 "Controle o Diabetes com Sabor",
                                 fontWeight = FontWeight.ExtraBold,
-                                fontSize = 16.sp,
+                                fontSize = 15.sp,
                                 color = GreenDark
                             )
                         }

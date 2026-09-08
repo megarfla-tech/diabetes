@@ -98,8 +98,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
@@ -151,46 +155,227 @@ fun SalesPageScreen() {
     val scrollState = rememberScrollState()
 
     var isTopBarVisible by remember { mutableStateOf(true) }
-    var previousScrollValue by remember { mutableIntStateOf(0) }
 
-    // Controla a visibilidade da barra de cima ao rolar a página
-    LaunchedEffect(scrollState.value) {
-        val current = scrollState.value
-        val delta = current - previousScrollValue
-        if (current <= 20) {
-            isTopBarVisible = true
-        } else if (delta > 8) {
-            // Rola a página para baixo -> barra fixa de cima desaparece
-            isTopBarVisible = false
-        } else if (delta < -12) {
-            // Rola a página para cima -> barra de cima reaparece
-            isTopBarVisible = true
+    val nestedScrollConnection = remember {
+        object : NestedScrollConnection {
+            override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
+                val delta = available.y
+                // User scrolls down (finger moves content up): delta is negative
+                if (delta < -8f && scrollState.value > 30) {
+                    isTopBarVisible = false
+                }
+                // User scrolls up (finger moves content down): delta is positive
+                else if (delta > 8f) {
+                    isTopBarVisible = true
+                }
+                return Offset.Zero
+            }
         }
-        previousScrollValue = current
     }
 
-    // Barra fixa de baixo aparece quando chega quase no final da página (~70% do scroll total)
+    // Always keep top bar visible if user is at or near the top
+    LaunchedEffect(scrollState.value) {
+        if (scrollState.value <= 30) {
+            isTopBarVisible = true
+        }
+    }
+
+    // Barra fixa de baixo aparece quando chega quase no final da página (~65% do scroll)
     val isBottomBarVisible by remember {
         derivedStateOf {
             val max = scrollState.maxValue
-            max > 0 && scrollState.value >= (max * 0.70f)
+            max > 500 && scrollState.value >= (max * 0.65f)
         }
     }
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(SurfaceWhite)
-    ) {
+    Scaffold(
+        topBar = {
+            AnimatedVisibility(
+                visible = isTopBarVisible,
+                enter = slideInVertically(initialOffsetY = { -it }) + expandVertically(),
+                exit = slideOutVertically(targetOffsetY = { -it }) + shrinkVertically()
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .shadow(4.dp)
+                        .background(SurfaceWhite)
+                ) {
+                    // Top Urgency Banner with pulsing fire icon
+                    Surface(
+                        color = EmeraldDark,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .statusBarsPadding()
+                                .padding(horizontal = 14.dp, vertical = 7.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Icon(
+                                Icons.Default.LocalFireDepartment,
+                                contentDescription = "Urgência",
+                                tint = AccentGold,
+                                modifier = Modifier.size(16.dp)
+                            )
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Text(
+                                text = "OFERTA ESPECIAL COM 4 BÔNUS: ",
+                                color = Color.White,
+                                fontSize = 11.sp,
+                                fontWeight = FontWeight.ExtraBold,
+                                letterSpacing = 0.5.sp
+                            )
+                            Surface(
+                                shape = RoundedCornerShape(4.dp),
+                                color = Color(0x33FFFFFF),
+                                modifier = Modifier.padding(horizontal = 4.dp)
+                            ) {
+                                Text(
+                                    text = timerString,
+                                    color = Color(0xFFFFF275),
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
+                                    fontFamily = FontFamily.Monospace
+                                )
+                            }
+                        }
+                    }
+
+                    // App Navigation Top Bar
+                    CenterAlignedTopAppBar(
+                        title = {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(
+                                    Icons.Default.WorkspacePremium,
+                                    contentDescription = null,
+                                    tint = GreenPrimary,
+                                    modifier = Modifier.size(18.dp)
+                                )
+                                Spacer(modifier = Modifier.width(6.dp))
+                                Text(
+                                    "Controle o Diabetes com Sabor",
+                                    fontWeight = FontWeight.ExtraBold,
+                                    fontSize = 15.sp,
+                                    color = GreenDark
+                                )
+                            }
+                        },
+                        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                            containerColor = SurfaceWhite
+                        ),
+                        windowInsets = WindowInsets(0, 0, 0, 0),
+                        actions = {
+                            IconButton(
+                                onClick = { showHtmlDialog = true },
+                                modifier = Modifier.testTag("action_view_html")
+                            ) {
+                                Icon(
+                                    Icons.Default.Code,
+                                    contentDescription = "Ver código HTML da página",
+                                    tint = GreenPrimary
+                                )
+                            }
+                        }
+                    )
+                }
+            }
+        },
+        bottomBar = {
+            AnimatedVisibility(
+                visible = isBottomBarVisible,
+                enter = slideInVertically(initialOffsetY = { it }) + expandVertically(),
+                exit = slideOutVertically(targetOffsetY = { it }) + shrinkVertically()
+            ) {
+                // Sticky Floating Conversion Bar
+                Surface(
+                    color = SurfaceWhite,
+                    shadowElevation = 16.dp,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .windowInsetsPadding(WindowInsets.navigationBars)
+                        .border(BorderStroke(1.dp, CardBorder))
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 10.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Column {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(
+                                    text = "De R$ 197",
+                                    fontSize = 11.sp,
+                                    color = TextMuted,
+                                    textDecoration = TextDecoration.LineThrough
+                                )
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Surface(
+                                    color = Color(0xFFDC2626),
+                                    shape = RoundedCornerShape(4.dp)
+                                ) {
+                                    Text(
+                                        text = "-85%",
+                                        color = Color.White,
+                                        fontSize = 9.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        modifier = Modifier.padding(horizontal = 4.dp, vertical = 1.dp)
+                                    )
+                                }
+                            }
+                            Text(
+                                text = "R$ 25,00",
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.ExtraBold,
+                                color = GreenDark
+                            )
+                        }
+
+                        Button(
+                            onClick = onOpenCheckout,
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = AccentOrange
+                            ),
+                            shape = RoundedCornerShape(50),
+                            modifier = Modifier
+                                .testTag("sticky_bottom_cta_button")
+                                .height(48.dp)
+                                .shadow(6.dp, RoundedCornerShape(50), ambientColor = AccentOrange, spotColor = AccentOrange)
+                        ) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(
+                                    Icons.Default.Lock,
+                                    contentDescription = null,
+                                    tint = Color.White,
+                                    modifier = Modifier.size(15.dp)
+                                )
+                                Spacer(modifier = Modifier.width(6.dp))
+                                Text(
+                                    text = "QUERO MINHAS 400 RECEITAS",
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.ExtraBold,
+                                    color = Color.White
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ) { innerPadding ->
         // Conteúdo Principal Rolável (100% Nativo Jetpack Compose)
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .padding(innerPadding)
+                .nestedScroll(nestedScrollConnection)
                 .verticalScroll(scrollState)
         ) {
-            // Espaçador do topo para a barra inicial não sobrepor a headline
-            Spacer(modifier = Modifier.statusBarsPadding().height(96.dp))
-
             // ==========================================
             // 1. HEADLINE PRINCIPAL & HERO SECTION
             // ==========================================
@@ -663,187 +848,6 @@ fun SalesPageScreen() {
             // 13. RODAPÉ COM CREDIBILIDADE & AVISO LEGAL
             // ==========================================
             FooterSection(onOpenCheckout = onOpenCheckout)
-
-            // Espaçador inferior para garantir rolagem completa acima da barra de compra
-            Spacer(modifier = Modifier.navigationBarsPadding().height(90.dp))
-        }
-
-        // Barra Fixa de Cima: Desaparece ao rolar a página para baixo e reaparece ao rolar para cima ou no topo
-        AnimatedVisibility(
-            visible = isTopBarVisible,
-            enter = slideInVertically(initialOffsetY = { -it }) + fadeIn(),
-            exit = slideOutVertically(targetOffsetY = { -it }) + fadeOut(),
-            modifier = Modifier.align(Alignment.TopCenter)
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(6.dp)
-                    .background(SurfaceWhite)
-            ) {
-                // Banner Superior de Urgência com Timer e preenchimento de status bar
-                Surface(
-                    color = EmeraldDark,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .statusBarsPadding()
-                            .padding(horizontal = 14.dp, vertical = 7.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Icon(
-                            Icons.Default.LocalFireDepartment,
-                            contentDescription = "Urgência",
-                            tint = AccentGold,
-                            modifier = Modifier.size(16.dp)
-                        )
-                        Spacer(modifier = Modifier.width(6.dp))
-                        Text(
-                            text = "OFERTA ESPECIAL COM 4 BÔNUS: ",
-                            color = Color.White,
-                            fontSize = 11.sp,
-                            fontWeight = FontWeight.ExtraBold,
-                            letterSpacing = 0.5.sp
-                        )
-                        Surface(
-                            shape = RoundedCornerShape(4.dp),
-                            color = Color(0x33FFFFFF),
-                            modifier = Modifier.padding(horizontal = 4.dp)
-                        ) {
-                            Text(
-                                text = timerString,
-                                color = Color(0xFFFFF275),
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Bold,
-                                modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
-                                fontFamily = FontFamily.Monospace
-                            )
-                        }
-                    }
-                }
-
-                // Barra de Título Superior do App
-                CenterAlignedTopAppBar(
-                    title = {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(
-                                Icons.Default.WorkspacePremium,
-                                contentDescription = null,
-                                tint = GreenPrimary,
-                                modifier = Modifier.size(18.dp)
-                            )
-                            Spacer(modifier = Modifier.width(6.dp))
-                            Text(
-                                "Controle o Diabetes com Sabor",
-                                fontWeight = FontWeight.ExtraBold,
-                                fontSize = 15.sp,
-                                color = GreenDark
-                            )
-                        }
-                    },
-                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                        containerColor = SurfaceWhite
-                    ),
-                    actions = {
-                        IconButton(
-                            onClick = { showHtmlDialog = true },
-                            modifier = Modifier.testTag("action_view_html")
-                        ) {
-                            Icon(
-                                Icons.Default.Code,
-                                contentDescription = "Ver código HTML da página",
-                                tint = GreenPrimary
-                            )
-                        }
-                    }
-                )
-            }
-        }
-
-        // Barra Fixa de Baixo: Aparece quando chega quase no final da página (~70% do scroll)
-        AnimatedVisibility(
-            visible = isBottomBarVisible,
-            enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
-            exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(),
-            modifier = Modifier.align(Alignment.BottomCenter)
-        ) {
-            Surface(
-                color = SurfaceWhite,
-                shadowElevation = 16.dp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .border(BorderStroke(1.dp, CardBorder))
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .navigationBarsPadding()
-                        .padding(horizontal = 16.dp, vertical = 10.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Column {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(
-                                text = "De R$ 197",
-                                fontSize = 11.sp,
-                                color = TextMuted,
-                                textDecoration = TextDecoration.LineThrough
-                            )
-                            Spacer(modifier = Modifier.width(4.dp))
-                            Surface(
-                                color = Color(0xFFDC2626),
-                                shape = RoundedCornerShape(4.dp)
-                            ) {
-                                Text(
-                                    text = "-85%",
-                                    color = Color.White,
-                                    fontSize = 9.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    modifier = Modifier.padding(horizontal = 4.dp, vertical = 1.dp)
-                                )
-                            }
-                        }
-                        Text(
-                            text = "R$ 25,00",
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.ExtraBold,
-                            color = GreenDark
-                        )
-                    }
-
-                    Button(
-                        onClick = onOpenCheckout,
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = AccentOrange
-                        ),
-                        shape = RoundedCornerShape(50),
-                        modifier = Modifier
-                            .testTag("sticky_bottom_cta_button")
-                            .height(48.dp)
-                            .shadow(6.dp, RoundedCornerShape(50), ambientColor = AccentOrange, spotColor = AccentOrange)
-                    ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(
-                                Icons.Default.Lock,
-                                contentDescription = null,
-                                tint = Color.White,
-                                modifier = Modifier.size(15.dp)
-                            )
-                            Spacer(modifier = Modifier.width(6.dp))
-                            Text(
-                                text = "QUERO MINHAS 400 RECEITAS",
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.ExtraBold,
-                                color = Color.White
-                            )
-                        }
-                    }
-                }
-            }
         }
     }
 

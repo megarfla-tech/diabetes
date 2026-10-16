@@ -105,7 +105,9 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -155,16 +157,19 @@ fun SalesPageScreen() {
     val scrollState = rememberScrollState()
 
     var isTopBarVisible by remember { mutableStateOf(true) }
+    var topBarHeightPx by remember { mutableIntStateOf(0) }
+    val density = LocalDensity.current
+    val topBarHeightDp = with(density) { topBarHeightPx.toDp() }
 
     val nestedScrollConnection = remember {
         object : NestedScrollConnection {
             override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
                 val delta = available.y
-                // User scrolls down (finger moves content up): delta is negative
-                if (delta < -8f && scrollState.value > 30) {
+                // Ao rolar para baixo (dedo sobe): delta negativo -> recolhe barra superior
+                if (delta < -8f && scrollState.value > 40) {
                     isTopBarVisible = false
                 }
-                // User scrolls up (finger moves content down): delta is positive
+                // Ao rolar para cima (dedo desce): delta positivo -> reaparece barra superior
                 else if (delta > 8f) {
                     isTopBarVisible = true
                 }
@@ -173,209 +178,40 @@ fun SalesPageScreen() {
         }
     }
 
-    // Always keep top bar visible if user is at or near the top
+    // Mantém sempre a barra superior visível ao retornar ao topo ou estar perto dele
     LaunchedEffect(scrollState.value) {
-        if (scrollState.value <= 30) {
+        if (scrollState.value <= 40) {
             isTopBarVisible = true
         }
     }
 
-    // Barra fixa de baixo aparece quando chega quase no final da página (~65% do scroll)
+    // Barra fixa de baixo aparece quando chega perto do final da página (~65% do scroll)
     val isBottomBarVisible by remember {
         derivedStateOf {
             val max = scrollState.maxValue
-            max > 500 && scrollState.value >= (max * 0.65f)
+            max > 400 && scrollState.value >= (max * 0.65f)
         }
     }
 
-    Scaffold(
-        topBar = {
-            AnimatedVisibility(
-                visible = isTopBarVisible,
-                enter = slideInVertically(initialOffsetY = { -it }) + expandVertically(),
-                exit = slideOutVertically(targetOffsetY = { -it }) + shrinkVertically()
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .shadow(4.dp)
-                        .background(SurfaceWhite)
-                ) {
-                    // Top Urgency Banner with pulsing fire icon
-                    Surface(
-                        color = EmeraldDark,
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .statusBarsPadding()
-                                .padding(horizontal = 14.dp, vertical = 7.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.Center
-                        ) {
-                            Icon(
-                                Icons.Default.LocalFireDepartment,
-                                contentDescription = "Urgência",
-                                tint = AccentGold,
-                                modifier = Modifier.size(16.dp)
-                            )
-                            Spacer(modifier = Modifier.width(6.dp))
-                            Text(
-                                text = "OFERTA ESPECIAL COM 4 BÔNUS: ",
-                                color = Color.White,
-                                fontSize = 11.sp,
-                                fontWeight = FontWeight.ExtraBold,
-                                letterSpacing = 0.5.sp
-                            )
-                            Surface(
-                                shape = RoundedCornerShape(4.dp),
-                                color = Color(0x33FFFFFF),
-                                modifier = Modifier.padding(horizontal = 4.dp)
-                            ) {
-                                Text(
-                                    text = timerString,
-                                    color = Color(0xFFFFF275),
-                                    fontSize = 12.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
-                                    fontFamily = FontFamily.Monospace
-                                )
-                            }
-                        }
-                    }
-
-                    // App Navigation Top Bar
-                    CenterAlignedTopAppBar(
-                        title = {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Icon(
-                                    Icons.Default.WorkspacePremium,
-                                    contentDescription = null,
-                                    tint = GreenPrimary,
-                                    modifier = Modifier.size(18.dp)
-                                )
-                                Spacer(modifier = Modifier.width(6.dp))
-                                Text(
-                                    "Controle o Diabetes com Sabor",
-                                    fontWeight = FontWeight.ExtraBold,
-                                    fontSize = 15.sp,
-                                    color = GreenDark
-                                )
-                            }
-                        },
-                        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                            containerColor = SurfaceWhite
-                        ),
-                        windowInsets = WindowInsets(0, 0, 0, 0),
-                        actions = {
-                            IconButton(
-                                onClick = { showHtmlDialog = true },
-                                modifier = Modifier.testTag("action_view_html")
-                            ) {
-                                Icon(
-                                    Icons.Default.Code,
-                                    contentDescription = "Ver código HTML da página",
-                                    tint = GreenPrimary
-                                )
-                            }
-                        }
-                    )
-                }
-            }
-        },
-        bottomBar = {
-            AnimatedVisibility(
-                visible = isBottomBarVisible,
-                enter = slideInVertically(initialOffsetY = { it }) + expandVertically(),
-                exit = slideOutVertically(targetOffsetY = { it }) + shrinkVertically()
-            ) {
-                // Sticky Floating Conversion Bar
-                Surface(
-                    color = SurfaceWhite,
-                    shadowElevation = 16.dp,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .windowInsetsPadding(WindowInsets.navigationBars)
-                        .border(BorderStroke(1.dp, CardBorder))
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp, vertical = 10.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Column {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Text(
-                                    text = "De R$ 197",
-                                    fontSize = 11.sp,
-                                    color = TextMuted,
-                                    textDecoration = TextDecoration.LineThrough
-                                )
-                                Spacer(modifier = Modifier.width(4.dp))
-                                Surface(
-                                    color = Color(0xFFDC2626),
-                                    shape = RoundedCornerShape(4.dp)
-                                ) {
-                                    Text(
-                                        text = "-85%",
-                                        color = Color.White,
-                                        fontSize = 9.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        modifier = Modifier.padding(horizontal = 4.dp, vertical = 1.dp)
-                                    )
-                                }
-                            }
-                            Text(
-                                text = "R$ 25,00",
-                                fontSize = 20.sp,
-                                fontWeight = FontWeight.ExtraBold,
-                                color = GreenDark
-                            )
-                        }
-
-                        Button(
-                            onClick = onOpenCheckout,
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = AccentOrange
-                            ),
-                            shape = RoundedCornerShape(50),
-                            modifier = Modifier
-                                .testTag("sticky_bottom_cta_button")
-                                .height(48.dp)
-                                .shadow(6.dp, RoundedCornerShape(50), ambientColor = AccentOrange, spotColor = AccentOrange)
-                        ) {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Icon(
-                                    Icons.Default.Lock,
-                                    contentDescription = null,
-                                    tint = Color.White,
-                                    modifier = Modifier.size(15.dp)
-                                )
-                                Spacer(modifier = Modifier.width(6.dp))
-                                Text(
-                                    text = "QUERO MINHAS 400 RECEITAS",
-                                    fontSize = 12.sp,
-                                    fontWeight = FontWeight.ExtraBold,
-                                    color = Color.White
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    ) { innerPadding ->
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(BackgroundLight)
+    ) {
         // Conteúdo Principal Rolável (100% Nativo Jetpack Compose)
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
                 .nestedScroll(nestedScrollConnection)
                 .verticalScroll(scrollState)
         ) {
+            // Espaçador no topo correspondente à altura exata da barra superior (evita qualquer sobreposição da headline na abertura)
+            Spacer(
+                modifier = Modifier.height(
+                    if (topBarHeightDp > 0.dp) topBarHeightDp else 116.dp
+                )
+            )
+
             // ==========================================
             // 1. HEADLINE PRINCIPAL & HERO SECTION
             // ==========================================
@@ -538,7 +374,7 @@ fun SalesPageScreen() {
                     // 10. CTA 1 (Hero)
                     PulsingCtaButton(
                         text = "QUERO CONTROLAR MEU DIABETES AGORA",
-                        subtext = "🔒 Acesso Imediato por apenas R$ 25,00 · Garantia de 7 Dias",
+                        subtext = "🔒 Acesso Imediato por apenas R$ 49,00 · Garantia de 7 Dias",
                         testTag = "cta_button_hero",
                         onClick = onOpenCheckout
                     )
@@ -758,7 +594,7 @@ fun SalesPageScreen() {
                 tag = "PRESENTES EXCLUSIVOS DESTA EDIÇÃO",
                 tagColor = GreenPrimary,
                 title = "4 Bônus Especiais (97 Páginas Inclusas Gratuitamente)",
-                subtitle = "Comprando hoje nesta oferta especial por R$ 25,00, você leva gratuitamente 4 materiais complementares avaliados em R$ 220,00:",
+                subtitle = "Comprando hoje nesta oferta especial por R$ 49,00, você leva gratuitamente 4 materiais complementares avaliados em R$ 220,00:",
                 backgroundColor = Color(0xFFF6FAF7)
             ) {
                 SalesDataRepository.bonuses.forEach { bonus ->
@@ -771,7 +607,7 @@ fun SalesPageScreen() {
                 // 10. CTA 2 (Meio)
                 PulsingCtaButton(
                     text = "QUERO MINHAS 400 RECEITAS + 4 BÔNUS",
-                    subtext = "Economize R$ 220,00 em presentes e pague só R$ 25,00",
+                    subtext = "Economize R$ 220,00 em presentes e pague só R$ 49,00",
                     testTag = "cta_button_mid",
                     onClick = onOpenCheckout
                 )
@@ -794,7 +630,7 @@ fun SalesPageScreen() {
             }
 
             // ==========================================
-            // 11. SEÇÃO DE URGÊNCIA / ESCASSEZ & OFERTA (R$ 25,00)
+            // 11. SEÇÃO DE URGÊNCIA / ESCASSEZ & OFERTA (R$ 49,00)
             // ==========================================
             SectionContainer(
                 tag = "CONDIÇÃO ESPECIAL POR TEMPO LIMITADO",
@@ -848,6 +684,193 @@ fun SalesPageScreen() {
             // 13. RODAPÉ COM CREDIBILIDADE & AVISO LEGAL
             // ==========================================
             FooterSection(onOpenCheckout = onOpenCheckout)
+
+            // Espaçador inferior para garantir rolagem completa acima da barra de compra
+            Spacer(modifier = Modifier.navigationBarsPadding().height(96.dp))
+        }
+
+        // Barra Superior: Desliza para fora ao rolar para baixo e reaparece ao rolar para cima ou no topo
+        AnimatedVisibility(
+            visible = isTopBarVisible,
+            enter = slideInVertically(initialOffsetY = { -it }) + fadeIn(),
+            exit = slideOutVertically(targetOffsetY = { -it }) + fadeOut(),
+            modifier = Modifier.align(Alignment.TopCenter)
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .onGloballyPositioned { coordinates ->
+                        if (coordinates.size.height > 0) {
+                            topBarHeightPx = coordinates.size.height
+                        }
+                    }
+                    .shadow(4.dp)
+                    .background(SurfaceWhite)
+            ) {
+                // Top Urgency Banner com timer
+                Surface(
+                    color = EmeraldDark,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .statusBarsPadding()
+                            .padding(horizontal = 14.dp, vertical = 7.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Icon(
+                            Icons.Default.LocalFireDepartment,
+                            contentDescription = "Urgência",
+                            tint = AccentGold,
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(
+                            text = "OFERTA ESPECIAL COM 4 BÔNUS: ",
+                            color = Color.White,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            letterSpacing = 0.5.sp
+                        )
+                        Surface(
+                            shape = RoundedCornerShape(4.dp),
+                            color = Color(0x33FFFFFF),
+                            modifier = Modifier.padding(horizontal = 4.dp)
+                        ) {
+                            Text(
+                                text = timerString,
+                                color = Color(0xFFFFF275),
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
+                                fontFamily = FontFamily.Monospace
+                            )
+                        }
+                    }
+                }
+
+                // App Navigation Top Bar
+                CenterAlignedTopAppBar(
+                    title = {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                Icons.Default.WorkspacePremium,
+                                contentDescription = null,
+                                tint = GreenPrimary,
+                                modifier = Modifier.size(18.dp)
+                            )
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Text(
+                                "Controle o Diabetes com Sabor",
+                                fontWeight = FontWeight.ExtraBold,
+                                fontSize = 15.sp,
+                                color = GreenDark
+                            )
+                        }
+                    },
+                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                        containerColor = SurfaceWhite
+                    ),
+                    windowInsets = WindowInsets(0, 0, 0, 0),
+                    actions = {
+                        IconButton(
+                            onClick = { showHtmlDialog = true },
+                            modifier = Modifier.testTag("action_view_html")
+                        ) {
+                            Icon(
+                                Icons.Default.Code,
+                                contentDescription = "Ver código HTML da página",
+                                tint = GreenPrimary
+                            )
+                        }
+                    }
+                )
+            }
+        }
+
+        // Barra Inferior de Checkout: Aparece perto do final da página (~65% do scroll)
+        AnimatedVisibility(
+            visible = isBottomBarVisible,
+            enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
+            exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(),
+            modifier = Modifier.align(Alignment.BottomCenter)
+        ) {
+            Surface(
+                color = SurfaceWhite,
+                shadowElevation = 16.dp,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .windowInsetsPadding(WindowInsets.navigationBars)
+                    .border(BorderStroke(1.dp, CardBorder))
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Column {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(
+                                text = "De R$ 197",
+                                fontSize = 11.sp,
+                                color = TextMuted,
+                                textDecoration = TextDecoration.LineThrough
+                            )
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Surface(
+                                color = Color(0xFFDC2626),
+                                shape = RoundedCornerShape(4.dp)
+                            ) {
+                                Text(
+                                    text = "-75%",
+                                    color = Color.White,
+                                    fontSize = 9.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(horizontal = 4.dp, vertical = 1.dp)
+                                )
+                            }
+                        }
+                        Text(
+                            text = "R$ 49,00",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = GreenDark
+                        )
+                    }
+
+                    Button(
+                        onClick = onOpenCheckout,
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = AccentOrange
+                        ),
+                        shape = RoundedCornerShape(50),
+                        modifier = Modifier
+                            .testTag("sticky_bottom_cta_button")
+                            .height(48.dp)
+                            .shadow(6.dp, RoundedCornerShape(50), ambientColor = AccentOrange, spotColor = AccentOrange)
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                Icons.Default.Lock,
+                                contentDescription = null,
+                                tint = Color.White,
+                                modifier = Modifier.size(15.dp)
+                            )
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Text(
+                                text = "QUERO MINHAS 400 RECEITAS",
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.ExtraBold,
+                                color = Color.White
+                            )
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -1923,7 +1946,7 @@ fun PricingCard(
                 shape = RoundedCornerShape(50)
             ) {
                 Text(
-                    text = "85% DE DESCONTO · OFERTA ESPECIAL",
+                    text = "75% DE DESCONTO · OFERTA ESPECIAL",
                     color = Color.White,
                     fontSize = 11.sp,
                     fontWeight = FontWeight.ExtraBold,
@@ -1955,7 +1978,7 @@ fun PricingCard(
                     color = GreenPrimary
                 )
                 Text(
-                    text = "25,00",
+                    text = "49,00",
                     fontSize = 44.sp,
                     fontWeight = FontWeight.ExtraBold,
                     color = GreenDark
@@ -1975,7 +1998,7 @@ fun PricingCard(
                 modifier = Modifier.padding(top = 6.dp)
             ) {
                 Text(
-                    text = "🔥 Economize R$ 169,10 garantindo hoje",
+                    text = "🔥 Economize R$ 148,00 garantindo hoje",
                     color = GreenPrimary,
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
